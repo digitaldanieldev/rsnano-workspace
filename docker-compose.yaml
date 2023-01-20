@@ -1,5 +1,5 @@
 services:
-  rsnanocoder:
+  ide:
     build: ./docker-image
     cap_add:
       - SYS_PTRACE
@@ -12,13 +12,13 @@ services:
     restart: always
 
 volumes:
-  rust-nano-data:
+  rsnano-workspace-data:
     driver: local
     driver_opts:
       type: none
       o: bind
       device: "/media/1000gb/dockerdata/rsnano-workspace/data"
-  rust-nano-home:
+  rsnano-workspace-home:
     driver: local
     driver_opts:
       type: none
