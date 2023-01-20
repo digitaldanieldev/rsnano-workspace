@@ -1,0 +1,27 @@
+services:
+  rsnanocoder:
+    build: ./docker-image
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    network_mode: "host"
+    volumes:
+      - rsnano-workspace-data:/data
+      - rsnano-workspace-home:/home
+    restart: always
+
+volumes:
+  rust-nano-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "/media/1000gb/dockerdata/rsnano-workspace/data"
+  rust-nano-home:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "/media/1000gb/dockerdata/rsnano-workspace/home"
+
